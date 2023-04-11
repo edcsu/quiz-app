@@ -2,9 +2,14 @@
 import { RouterLink, RouterView } from 'vue-router'
 
 import q from './assets/data/quizzes.json'
-import {ref} from 'vue'
+import {ref, watch} from 'vue'
 
 const quizzes = ref(q)
+const search = ref("")
+
+watch(search, () => {
+  quizzes.value = q.filter(quiz => quiz.name.toLowerCase().includes(search.value.toLocaleLowerCase()))
+})
 
 </script>
 
@@ -12,7 +17,7 @@ const quizzes = ref(q)
   <div class="container">
     <header>
       <h1 id="app-text">Quizzes</h1>
-      <input id="search-quiz" type="text" placeholder="Search....">
+      <input id="search-quiz" v-model.trim="search" type="text" placeholder="Search....">
     </header>
 
     <div class="options-container">
