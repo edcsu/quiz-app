@@ -10,13 +10,13 @@
 
 <style scoped>
 header {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .bar {
-  width: 10rem;
-  height: 10rem;
-  border: 1rem solid bisque;
+  width: 18rem;
+  height: 4rem;
+  border: 0.4rem solid bisque;
 }
 
 .completion {

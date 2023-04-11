@@ -1,14 +1,19 @@
+<script setup>
+ const {question} = defineProps(['question'])
+
+</script>
+
 <template>
     <div>
         <div class="question-conatiner">
           <h1 class="question">
-            What is the chemical value of table salt?
+            {{ question.text }}
           </h1>
           <div class="answers-container">
-            <div class="answer">
-              <p class="answer-label">A</p>
+            <div v-for="option in question.options" :key="option.id" class="answer">
+              <p class="answer-label">{{ option.lable }}</p>
               <div class="answer-value">
-                <p>NaCl</p>
+                <p>{{ option.text }}</p>
               </div>
             </div>
           </div>
@@ -35,7 +40,7 @@
 .answer-label {
   background-color: bisque;
   width: 3rem;
-  height: 3rem;
+  height: 3.2rem;
   font-size: 2rem;
   display: flex;
   align-items: center;
@@ -46,6 +51,6 @@
   background-color: rgb(224, 239, 239);
   width: 100%;
   font-size: 2rem;
-  padding: 0 1 rem;
+  padding: 0 1rem;
 }
 </style>
