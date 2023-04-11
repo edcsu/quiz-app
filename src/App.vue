@@ -1,5 +1,11 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+
+import q from './assets/data/quizzes.json'
+import {ref} from 'vue'
+
+const quizzes = ref(q)
+
 </script>
 
 <template>
@@ -10,11 +16,11 @@ import { RouterLink, RouterView } from 'vue-router'
     </header>
 
     <div class="options-container">
-      <div class="card">
-        <img alt="Math image" class="logo" src="@/assets/images/math.jpeg"/>
+      <div v-for="quiz in quizzes" key="quiz.id" class="card">
+        <img alt="Math image" class="logo" :src="quiz.img"/>
         <div class="card-text">
-          <h2>Math</h2>
-          <p>15 questions</p>
+          <h2>{{quiz.name}}</h2>
+          <p>{{quiz.questions.length}} questions</p>
         </div>
       </div>
     </div>
@@ -55,8 +61,8 @@ header {
   overflow: hidden;
   border-radius: 2%;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 3rem;
-  margin-right: 2rem;
+  margin-bottom: 2rem;
+  margin-right: 1rem;
   cursor: pointer;
 }
 
